@@ -1,0 +1,35 @@
+#hero {
+	background: #222 url('/assets/img/chainmaile-placeholder.jpg') center center no-repeat;
+	background-size: cover;
+	/* height: 60%; */
+	color: #F81212;
+} 
+
+#hero .overlay {
+  background: rgba(0,0,0,0.6);
+}
+
+#hero .headline {
+	padding: 10rem 0;
+}
+
+#about .container {
+	padding: 5rem 0;
+}
+
+#about p {
+	padding: 1rem;
+}
+
+#getStarted .container {
+	padding: 5rem 0;
+}
+
+#getStarted ul {
+	padding: 1rem;
+	list-style: none;
+}
+
+#getStarted h2 {
+	padding-right: 19rem;
+}
