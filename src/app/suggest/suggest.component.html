@@ -41,17 +41,17 @@
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-3">
       <span>This needs to be refactored to be a reactive form so that I can add an array of ring sizes to this</span>
 
-      <form [formGroup]="suggestionForm" (ngSubmit)="onSubmit()">
-
-        <div formGroupName="weaveData">
+          <form (ngSubmit)="onSubmit()" #f="ngForm">
 
           <div class="form-group">
             <label for="weaveName">Weave Name</label>
             <input 
             type="text" 
             id="weaveName" 
-            formControlName="weaveName"
-            class="form-control">
+            name="weaveName" 
+            class="form-control"
+            ngModel
+            required>
           </div>
 
           <div class="form-group">
@@ -60,7 +60,9 @@
             type="text" 
             id="weavePhoto" 
             class="form-control" 
-             formControlName="weavePhoto">
+            name="weavePhoto"
+            ngModel 
+            required>
           </div>
 
           <div class="form-group">
@@ -68,41 +70,55 @@
             <input 
             type="text" 
             id="tutorial" 
-            class="form-control"
-            formControlName="tutorial" >
+            class="form-control" 
+            name="tutorial"
+            ngModel 
+            required>
           </div>
 
-          <div formArrayName="ringSizes">
-            <p>Ring Size(s) (please enter gauge number and awg sizes only) </p>
-            <button 
-              class="btn btn-default" 
-              type="button" 
-              (click)="onAddRing()">Add Ring</button>
-              <div 
-                class="form-group" 
-                *ngFor="let ringControl of suggestionForm.get('ringSizes').controls; let i = index">
+            <div class="row">
+              <div class="col-sm-2 form-group">
+                <label for="ringGauge">Ring Gauge</label>
                 <input 
-                  type="text" 
-                  class="form-control" 
-                  [formControlName]="i">
+                type="text" 
+                id="ringGauge" 
+                class="form-control" 
+                name="ringGauge" 
+                ngModel 
+                required>
               </div>
+              <div class="form-group col-sm-5">
+                <label for="ringSize">Ring Size (ID, inch fractions)</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="ringSize" 
+                name="ringSize" 
+                ngModel 
+                required>
+              </div>
+            </div> 
+            <div class="row">
+              <div class="col-xs-12">
+                <button 
+                  class="btn btn-success" 
+                  type="submit" 
+                  [disabled]="!f.valid">Submit
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <div class="row" *ngIf="submitted" id="after">
+            <div class="col-xs-12">
+              <h3>Thanks for helping! You submitted:</h3>
+              <p>Weave: {{ weave.weaveName }}</p>
+              <p>Photo URL: {{ weave.weavePhoto }}</p>
+              <p>Tutorial URL: {{ weave.tutorial }}</p>
+              <p>Ring Size(s): {{ weave.ringGauge }} {{ weave.ringSize }}"</p>
+            </div>
+          </div>
+
           </div>
         </div>
-          <button class="btn btn-primary" type="submit">
-          Submit</button>
-
-      </form>
-
-      <div class="row" *ngIf="submitted" id="after">
-        <div class="col-xs-12">
-          <h3>Thanks for helping! You submitted:</h3>
-          <p>Weave: {{ weave.weaveName }}</p>
-          <p>Photo URL: {{ weave.weavePhoto }}</p>
-          <p>Tutorial URL: {{ weave.tutorial }}</p>
-          <p>Ring Size(s): {{ weave.weavePhoto }}</p>
-        </div>
-      </div>
-
-  </div>
-  </div>
 </section>
