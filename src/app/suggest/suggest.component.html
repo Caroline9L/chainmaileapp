@@ -1,0 +1,108 @@
+<div style="text-align:center">
+  <section id="hero">
+    <div class="overlay">
+      <div class="headline">
+        <h1 class="display-4">
+          What is Missing?
+        </h1>
+        <h4>Suggest a weave for our database</h4>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section id="about">
+  <div class="container">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-12 about-text">
+          <div class="media">
+            <img class="d-flex align-self-center mr-3 img-fluid img-thumbnail" src="/assets/img/chainmaile-placeholder-2.jpg" alt="a placeholder that I shouldn't use"
+              style="max-width: 25%" />
+            <div class="media-body text-left">
+              <p class="mb-0">
+                The bigger our community gets, the more we learn from each other. My database of weaves is tiny right now -- partially because
+                this is a new project that is just getting underway, and partially because I bet you know a weave that I
+                haven't included! (I only fairly recently started branching out from just my standard Euro 4-in-1, so I'm
+                behind the times.)
+                <br>
+                <br> What were you hoping to see that isn't here? Please fill out the form to suggest it gets added!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="suggestionForm">
+  <div class="container">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-3">
+      <span>This needs to be refactored to be a reactive form so that I can add an array of ring sizes to this</span>
+
+      <form [formGroup]="suggestionForm" (ngSubmit)="onSubmit()">
+
+        <div formGroupName="weaveData">
+
+          <div class="form-group">
+            <label for="weaveName">Weave Name</label>
+            <input 
+            type="text" 
+            id="weaveName" 
+            formControlName="weaveName"
+            class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="weavePhoto">Weave Photo (please enter url)</label>
+            <input 
+            type="text" 
+            id="weavePhoto" 
+            class="form-control" 
+             formControlName="weavePhoto">
+          </div>
+
+          <div class="form-group">
+            <label for="tutorial">Tutorial (please enter url)</label>
+            <input 
+            type="text" 
+            id="tutorial" 
+            class="form-control"
+            formControlName="tutorial" >
+          </div>
+
+          <div formArrayName="ringSizes">
+            <p>Ring Size(s) (please enter gauge number and awg sizes only) </p>
+            <button 
+              class="btn btn-default" 
+              type="button" 
+              (click)="onAddRing()">Add Ring</button>
+              <div 
+                class="form-group" 
+                *ngFor="let ringControl of suggestionForm.get('ringSizes').controls; let i = index">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  [formControlName]="i">
+              </div>
+          </div>
+        </div>
+          <button class="btn btn-primary" type="submit">
+          Submit</button>
+
+      </form>
+
+      <div class="row" *ngIf="submitted" id="after">
+        <div class="col-xs-12">
+          <h3>Thanks for helping! You submitted:</h3>
+          <p>Weave: {{ weave.weaveName }}</p>
+          <p>Photo URL: {{ weave.weavePhoto }}</p>
+          <p>Tutorial URL: {{ weave.tutorial }}</p>
+          <p>Ring Size(s): {{ weave.weavePhoto }}</p>
+        </div>
+      </div>
+
+  </div>
+  </div>
+</section>
