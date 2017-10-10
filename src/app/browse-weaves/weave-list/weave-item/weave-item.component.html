@@ -1,0 +1,14 @@
+  <h4 class="text-center">{{ weaves.name }}</h4>
+    <div class="row">
+      <div class="col-sm-3">
+        <img [src]="weaves.imagePath" alt="{{ weaves.name }}" class="img-responsive" style="max-height: 150px;">
+      </div>
+
+      <div class="col-sm-9">
+          <p><strong>Description:</strong> {{ weaves.description }}</p>
+          <p><strong>Tutorial link:</strong> {{ weaves.tutorial }}</p>
+          <p><strong>Rings used:</strong> {{ weaves.ringGauge }} {{ weaves.ringSize }}</p>
+          <p><strong>Aspect Ratio:</strong> {{ weaves.aspectRatio }} </p>
+      </div>
+    </div>
+    <hr>
