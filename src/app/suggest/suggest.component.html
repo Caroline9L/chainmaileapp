@@ -39,9 +39,8 @@
 <section id="suggestionForm">
   <div class="container">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-3">
-      <span>This needs to be refactored to be a reactive form so that I can add an array of ring sizes to this</span>
 
-          <form (ngSubmit)="onSubmit()" #f="ngForm">
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
 
           <div class="form-group">
             <label for="weaveName">Weave Name</label>
@@ -55,12 +54,23 @@
           </div>
 
           <div class="form-group">
-            <label for="weavePhoto">Weave Photo (please enter url)</label>
+            <label for="imagePath">Weave Photo (please enter url)</label>
             <input 
             type="text" 
-            id="weavePhoto" 
+            id="imagePath" 
             class="form-control" 
-            name="weavePhoto"
+            name="imagePath"
+            ngModel 
+            required>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Weave Description</label>
+            <input 
+            type="text" 
+            id="description" 
+            class="form-control" 
+            name="description" 
             ngModel 
             required>
           </div>
@@ -80,7 +90,7 @@
               <div class="col-sm-2 form-group">
                 <label for="ringGauge">Ring Gauge</label>
                 <input 
-                type="text" 
+                type="number" 
                 id="ringGauge" 
                 class="form-control" 
                 name="ringGauge" 
@@ -88,9 +98,9 @@
                 required>
               </div>
               <div class="form-group col-sm-5">
-                <label for="ringSize">Ring Size (ID, inch fractions)</label>
+                <label for="ringSize">Ring Size (ID, inch decimals)</label>
                 <input 
-                type="text" 
+                type="number" 
                 class="form-control" 
                 id="ringSize" 
                 name="ringSize" 
@@ -115,7 +125,7 @@
               <p>Weave: {{ weave.weaveName }}</p>
               <p>Photo URL: {{ weave.weavePhoto }}</p>
               <p>Tutorial URL: {{ weave.tutorial }}</p>
-              <p>Ring Size(s): {{ weave.ringGauge }} {{ weave.ringSize }}"</p>
+              <p>Ring Size(s): {{ weave.ringGauge }}g {{ weave.ringSize }}"</p>
             </div>
           </div>
 
