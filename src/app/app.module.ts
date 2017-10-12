@@ -13,6 +13,7 @@ import { WeaveListComponent } from './browse-weaves/weave-list/weave-list.compon
 import { WeaveItemComponent } from './browse-weaves/weave-list/weave-item/weave-item.component';
 import { WeaveService } from './shared/weave.service';
 import { WeaveDetailComponent } from './browse-weaves/weave-detail/weave-detail.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { WeaveDetailComponent } from './browse-weaves/weave-detail/weave-detail.
     WeaveListComponent,
     WeaveItemComponent,
     WeaveDetailComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
