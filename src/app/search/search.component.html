@@ -1,0 +1,78 @@
+<div style="text-align:center">
+  <section id="hero">
+    <div class="overlay">
+      <div class="headline">
+        <h1 class="display-4">
+          Find a Weave!
+        </h1>
+        <h4>Enter a ring, find a weave!</h4>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section id="about">
+  <div class="container">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-12 about-text">
+          <div class="media">
+            <img class="d-flex align-self-center mr-3 img-fluid img-thumbnail" src="/assets/img/chainmaile-placeholder-2.jpg" alt="a placeholder that I shouldn't use"
+              style="max-width: 25%" />
+            <div class="media-body text-left">
+              <p class="mb-0">
+                The bigger our community gets, the more we learn from each other. My database of weaves is tiny right now -- partially because
+                this is a new project that is just getting underway, and partially because I bet you know a weave that I
+                haven't included! (I only fairly recently started branching out from just my standard Euro 4-in-1, so I'm
+                behind the times.)
+                <br>
+                <br> What were you hoping to see that isn't here? Please fill out the form to suggest it gets added!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="searchForm">
+  <div class="container">
+    <div class="col text-center">
+      <h3>Search Your Ring Size:</h3>
+
+      <form (ngSubmit)="onSubmit()" #f="ngForm" class="">
+
+        <div class="row">
+          <div class="col-sm-2 form-group ml-auto">
+            <label for="ringGauge">Ring Gauge</label>
+            <input type="number" id="ringGauge" class="form-control" name="ringGauge" ngModel required>
+          </div>
+          <div class="form-group col-sm-5 mr-auto">
+            <label for="ringSize">Ring Size (ID, inch decimals)</label>
+            <input type="number" class="form-control" id="ringSize" name="ringSize" ngModel required>
+          </div>
+        </div>
+        <div class="row justify-content-center offset-6">
+          <div class="col-xs-2">
+            <button class="btn btn-success" type="submit" [disabled]="!f.valid">Submit
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <div class="row" *ngIf="submitted" id="after">
+        <div class="col-xs-12">
+          <h5>Here are some weaves that use {{ weave.ringGauge }}g {{ weave.ringSize }}" rings:</h5>
+          <!-- <app-weave-item *ngFor="let foundWeave of Weaves; let i = index" 
+            [weaves]="foundWeave"
+            [index]="i"></app-weave-item> -->
+            <!-- <app-weave-item *ngFor="let foundWeave of (Weaves | filter:findWeaves)" ></app-weave-item> -->
+
+<!-- This needs to loop thru the array of weaves and return any weave that has a matching aspect ratio -->
+        </div>
+      </div> 
+
+    </div>
+  </div>
+</section>
